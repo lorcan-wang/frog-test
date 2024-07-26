@@ -3,7 +3,7 @@ import { devtools } from "frog/dev";
 import { serveStatic } from "frog/serve-static";
 // import { neynar } from 'frog/hubs'
 import { handle } from "frog/vercel";
-
+import fs from 'fs'
 // Uncomment to use Edge Runtime.
 // export const config = {
 //   runtime: 'edge',
@@ -23,7 +23,7 @@ app.frame("/", (c) => {
   return c.res({
     imageOptions: { format: "svg" },
     headers:{
-      "Content-Type": "image/svg+xml"
+      // "Content-Type": "image/svg+xml"
     },
     image: (
       <div
