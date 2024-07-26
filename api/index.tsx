@@ -22,6 +22,9 @@ app.frame("/", (c) => {
   const fruit = inputText || buttonValue;
   return c.res({
     imageOptions: { format: "svg" },
+    headers:{
+      "Content-Type": "image/svg+xml"
+    },
     image: (
       <div
         style={{
@@ -40,7 +43,7 @@ app.frame("/", (c) => {
           width: "100%",
         }}
       >
-        <img src="/hope-start.gif" alt="" />
+        <img src="/hope-start.gif" alt="gif" />
       </div>
     ),
     intents: [
