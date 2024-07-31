@@ -49,8 +49,9 @@ app.frame("/", (c) => {
     intents: [
       <TextInput placeholder="Enter custom fruit..." />,
       <Button value="apples">Apples</Button>,
-      <Button.AddCastAction action='/foo/bar'>Action</Button.AddCastAction>,
-      <Button value="bananas">Bananas</Button>,
+      <Button.AddCastAction action="/foo/bar">Action</Button.AddCastAction>,
+      <Button.AddCastAction action="/foo/act">Action</Button.AddCastAction>,
+      // <Button value="bananas">Bananas</Button>,
       status === "response" && <Button.Reset>Reset</Button.Reset>,
     ],
   });
@@ -63,6 +64,21 @@ app.castAction(
   {
     name: "My Action",
     icon: "log",
+  }
+);
+app.composerAction(
+  "/foo/act",
+  (c) => {
+    return c.res({
+      title: "My Composr Action",
+      url: "https://example.com",
+    });
+  },
+  {
+    name: "Some Composer Action",
+    description: "Cool Composer Action",
+    icon: "image",
+    imageUrl: "https://frog.fm/logo-light.svg",
   }
 );
 
