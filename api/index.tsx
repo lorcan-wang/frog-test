@@ -3,7 +3,7 @@ import { devtools } from "frog/dev";
 import { serveStatic } from "frog/serve-static";
 // import { neynar } from 'frog/hubs'
 import { handle } from "frog/vercel";
-import fs from 'fs'
+import fs from "fs";
 // Uncomment to use Edge Runtime.
 // export const config = {
 //   runtime: 'edge',
@@ -22,7 +22,7 @@ app.frame("/", (c) => {
   const fruit = inputText || buttonValue;
   return c.res({
     imageOptions: { format: "svg" },
-    headers:{
+    headers: {
       // "Content-Type": "image/svg+xml"
     },
     image: (
@@ -49,12 +49,22 @@ app.frame("/", (c) => {
     intents: [
       <TextInput placeholder="Enter custom fruit..." />,
       <Button value="apples">Apples</Button>,
-      <Button value="oranges">Oranges</Button>,
+      <Button.AddCastAction action='/foo/bar'>Action</Button.AddCastAction>,
       <Button value="bananas">Bananas</Button>,
       status === "response" && <Button.Reset>Reset</Button.Reset>,
     ],
   });
 });
+app.castAction(
+  "/foo/bar",
+  (c) => {
+    return c.message({ message: "Action Succeeded" });
+  },
+  {
+    name: "My Action",
+    icon: "log",
+  }
+);
 
 // @ts-ignore
 const isEdgeFunction = typeof EdgeFunction !== "undefined";
