@@ -42,8 +42,8 @@ app.castAction("/add-map", (c) => addMapAction(c), {
   icon: "log",
 });
 
-devtools(app, { serveStatic });
-
+// devtools(app, { serveStatic });
+devtools(app, { assetsPath: '/.frog' })
 // for development environment , use nodejs
 // export const runtime = 'edge'
 export const GET = handle(app);
