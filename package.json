@@ -1,19 +1,35 @@
 {
-  "name": "template-vercel",
+  "name": "aetolia-frame",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "frog vercel-build",
-    "dev": "frog dev",
-    "deploy": "vercel"
+    "postinstall": "patch-package",
+    "dev": "next dev",
+    "deploy": "vercel",
+    "build": "npm run copy-static && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "copy-static": "cp -r ./node_modules/frog/_lib/ui/.frog ./public/.frog"
   },
   "dependencies": {
-    "frog": "latest",
-    "hono": "^4.5.1"
+    "@supabase/supabase-js": "^2.44.4",
+    "@upstash/redis": "^1.32.0",
+    "ethers": "^6.13.1",
+    "frog": "^0.14.5",
+    "hono": "^4",
+    "long": "^5.2.3",
+    "next": "^14.1.0",
+    "protobufjs": "^7.3.2",
+    "react": "^18",
+    "react-dom": "^18",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "tsx": "^4.16.2",
-    "typescript": "^5.5.4",
-    "vercel": "^32.7.2"
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "patch-package": "^8.0.0",
+    "typescript": "^5",
+    "vercel": "^32.4.1"
   }
 }
